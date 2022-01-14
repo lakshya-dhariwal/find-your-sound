@@ -41,6 +41,7 @@ function Search({ spotify }) {
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {result.map((item) => {
+              console.log(item);
               let imgUrl;
               if (!item.images[0]) {
                 imgUrl = "playlist.png";
@@ -53,7 +54,7 @@ function Search({ spotify }) {
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Link to="/discover">
+                  <Link to={`/discover/${item.id}`}>
                     <div className=" flex flex-col items-center justify-center cursor-pointer">
                       <img className="" src={imgUrl} width={100} />
                       <h1 className="text-slate-300 text-xs">{item.name}</h1>
@@ -69,4 +70,3 @@ function Search({ spotify }) {
   );
 }
 export default Search;
-

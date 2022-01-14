@@ -45,14 +45,14 @@ function Dashboard({ code }) {
       <BrowserRouter>
         <Nav user={user} />
         <Switch>
-          <Route path="/">
-            <Search spotify={spotify} />
-          </Route>
-          <Route path="/discover">
-            <Discover />
+          <Route path="/discover/:id">
+            <Discover spotify={spotify} />
           </Route>
           <Route path="/playlist">
             <Playlist />
+          </Route>
+          <Route path="/">
+            <Search spotify={spotify} />
           </Route>
         </Switch>
       </BrowserRouter>
