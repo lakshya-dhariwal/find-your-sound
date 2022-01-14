@@ -10,6 +10,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 function Dashboard({ code }) {
   const accessToken = useAuth(code);
   const spotify = useApi(accessToken);
+  const [user, setUser] = useState({ userName: "", userId: "" });
 
   useEffect(() => {
     if (!accessToken) {
@@ -17,22 +18,25 @@ function Dashboard({ code }) {
       return;
     }
 
-    // Get Elvis' albums TEST
-    spotify.getArtistAlbums("43ZHCT0cAZBISjO8DG9PnE").then(
+    spotify.getMe().then(
       (data) => {
-        console.log("Artist albums", data.body);
+        console.log("Me", data.body);
+        setUser({
+          name: data.body.display_name,
+          id: data.body.id,
+          images: data.body.images[0].url,
+        });
       },
       (err) => {
         console.error(err);
       }
     );
-    
   }, [accessToken]);
 
   return (
     <>
       <BrowserRouter>
-        <Nav />
+        <Nav user={user} />
         <Switch>
           <Route path="/">
             <Search spotify={spotify} />

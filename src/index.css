@@ -10,19 +10,40 @@
 
 @keyframes colorchange {
   0% {
-    background: #cffff1;
-    color: rgb(82, 211, 183);
-  }
-  33% {
     background: #ffd9df;
     color: rgb(192, 71, 71);
   }
+  33% {
+    background: #cffff1;
+    color: rgb(82, 211, 183);
+  }
   66% {
+    background: #f5f69a;
+    color: rgb(251, 176, 35);
+  }
+  100% {
     background: #ffd9df;
     color: rgb(186, 89, 195);
   }
+}
+
+.text {
+  animation: textcolorchange 10s linear 1s infinite;
+  -webkit-animation: textcolorchange 10s linear 0s infinite alternate;
+  padding: 0.25rem 1rem;
+}
+
+@keyframes textcolorchange {
+  0% {
+    color: rgb(82, 211, 183);
+  }
+  33% {
+    color: rgb(66, 92, 209);
+  }
+  66% {
+    color: rgb(186, 89, 195);
+  }
   100% {
-    background: #f5f69a;
-    color: rgb(251, 176, 35);
+    color: #f08585;
   }
 }
