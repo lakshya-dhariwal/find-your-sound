@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import AnimatedCard from "./AnimatedCard.js";
 
 function Search({ spotify }) {
   const [result, setResult] = useState();
@@ -50,17 +50,14 @@ function Search({ spotify }) {
               }
               console.log(item.images);
               return (
-                <motion.button
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
-                >
+                <AnimatedCard key={item.id}>
                   <Link to={`/discover/${item.id}`}>
-                    <div className=" flex flex-col items-center justify-center cursor-pointer">
+                    <div className=" flex flex-col items-center cursor-pointer">
                       <img className="" src={imgUrl} width={100} />
                       <h1 className="text-slate-300 text-xs">{item.name}</h1>
                     </div>
                   </Link>
-                </motion.button>
+                </AnimatedCard>
               );
             })}
           </div>
