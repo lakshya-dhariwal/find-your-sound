@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import AnimatedCard from "../motionComponents/AnimatedCard";
+
+import SongTrack from "./SongTrack";
 
 function Discover({ spotify, discoverPlaylist }) {
   const [tracks, setTracks] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const trackHoverHandler = (url) => {
-    if (!url) {
-      return;
-    }
-    var audio = new Audio(url);
-    audio.play();
-  };
   useEffect(() => {
     spotify.getPlaylistTracks(discoverPlaylist.id).then(
       (data) => {
@@ -52,14 +46,12 @@ function Discover({ spotify, discoverPlaylist }) {
                 imgUrl = item.track.album.images[0].url;
               }
               return (
-                <div
-                  onMouseOver={() => trackHoverHandler(item.track.preview_url)}
+                <SongTrack
+                  imgUrl={imgUrl}
                   key={item.track.id}
-                >
-                  <AnimatedCard>
-                    <img src={item.track.album.images[0].url} alt="" />
-                  </AnimatedCard>
-                </div>
+                  id={item.track.id}
+                  audioUrl={item.track.preview_url}
+                />
               );
             })}
           </div>
