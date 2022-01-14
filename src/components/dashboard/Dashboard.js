@@ -47,7 +47,7 @@ function Dashboard({ code }) {
       <BrowserRouter>
         <Nav user={user} />
         <Switch>
-          <Route path="/discover/:id">
+          <Route path="/discover">
             <Discover spotify={spotify} discoverPlaylist={discoverPlaylist} />
           </Route>
           <Route path="/playlist">

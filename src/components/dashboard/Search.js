@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import AnimatedCard from "../motionComponents/AnimatedCard.js";
 
-function Search({ spotify }) {
+function Search({ spotify, setDiscoverPlaylist }) {
+  const history = useHistory();
   const [result, setResult] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const searchHandler = (e) => {
@@ -15,6 +16,30 @@ function Search({ spotify }) {
       (data) => {
         setResult(data.body.playlists.items);
         setIsLoading(false);
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
+  };
+  const playlistHandler = (id) => {
+    spotify.getPlaylist(id).then(
+      (data) => {
+        let imgUrl;
+        if (!data.body.images[0]) {
+          imgUrl = "playlist.png";
+        } else {
+          imgUrl = data.body.images[0].url;
+        }
+        setDiscoverPlaylist({
+          id: data.body.id,
+          name: data.body.name,
+          description: data.body.description,
+          author: data.body.owner.display_name,
+          image: imgUrl,
+        });
+
+        history.push("/discover");
       },
       (err) => {
         console.error(err);
@@ -50,14 +75,14 @@ function Search({ spotify }) {
               }
               console.log(item.images);
               return (
-                <AnimatedCard key={item.id}>
-                  <Link to={`/discover/${item.id}`}>
+                <div key={item.id} onClick={() => playlistHandler(item.id)}>
+                  <AnimatedCard>
                     <div className=" flex flex-col items-center cursor-pointer">
                       <img className="" src={imgUrl} width={100} />
                       <h1 className="text-slate-300 text-xs">{item.name}</h1>
                     </div>
-                  </Link>
-                </AnimatedCard>
+                  </AnimatedCard>
+                </div>
               );
             })}
           </div>
