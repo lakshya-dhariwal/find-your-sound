@@ -14,7 +14,6 @@ function Search({ spotify }) {
       (data) => {
         setResult(data.body.playlists.items);
         setIsLoading(false);
-        console.log(result);
       },
       (err) => {
         console.error(err);
@@ -36,12 +35,20 @@ function Search({ spotify }) {
         {isLoading ? (
           "Loading"
         ) : (
-          <div className=" flex flex-col items-center px-2">
+          <div className="grid grid-cols-5 gap-5">
             {result.map((item) => {
+              let imgUrl;
+              if (!item.images[0]) {
+                imgUrl = "playlist.png";
+              } else {
+                imgUrl = item.images[0].url;
+              }
+
+              console.log(item.images);
               return (
-                <div className="flex flex-col items-center cursor-pointer">
-                  <h1 className="text-slate-300 text-sm p-1 ">{item.name}</h1>
-                  <img className="pb-4" src={item.images[0].url} width={100} />
+                <div className=" flex flex-col items-center">
+                  <img className="" src={imgUrl} width={100} />
+                  <h1 className="text-slate-300 text-sm">{item.name}</h1>
                 </div>
               );
             })}
@@ -53,3 +60,4 @@ function Search({ spotify }) {
 }
 
 export default Search;
+// flex flex-col items-center cursor-pointer
