@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function Search({ spotify }) {
   const [result, setResult] = useState();
@@ -9,7 +10,6 @@ function Search({ spotify }) {
       console.log("empty access token");
       return;
     }
-
     const query = e.target.value;
     spotify.searchPlaylists(query).then(
       (data) => {
@@ -53,10 +53,12 @@ function Search({ spotify }) {
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <div className=" flex flex-col items-center justify-center cursor-pointer">
-                    <img className="" src={imgUrl} width={100} />
-                    <h1 className="text-slate-300 text-xs">{item.name}</h1>
-                  </div>
+                  <Link to="/discover">
+                    <div className=" flex flex-col items-center justify-center cursor-pointer">
+                      <img className="" src={imgUrl} width={100} />
+                      <h1 className="text-slate-300 text-xs">{item.name}</h1>
+                    </div>
+                  </Link>
                 </motion.button>
               );
             })}
@@ -66,6 +68,5 @@ function Search({ spotify }) {
     </div>
   );
 }
-
 export default Search;
-// flex flex-col items-center cursor-pointer
+
