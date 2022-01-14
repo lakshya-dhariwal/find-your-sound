@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 
 function Search({ spotify }) {
@@ -31,11 +32,14 @@ function Search({ spotify }) {
           onChange={searchHandler}
         />
       </div>
-      <div className=" w-2/3 min-h-3/4 min-w-full ">
+      <div className=" w-2/3 min-h-3/4 min-w-full">
         {isLoading ? (
-          "Loading"
+          <h1 className="text-center text-stone-100">
+            Search for a Playlist to discover from .<br /> Example Search
+            DISCOVER WEEKLY , LOFI , ALTERNATIVE ROCK{" "}
+          </h1>
         ) : (
-          <div className="grid grid-cols-5 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {result.map((item) => {
               let imgUrl;
               if (!item.images[0]) {
@@ -43,13 +47,17 @@ function Search({ spotify }) {
               } else {
                 imgUrl = item.images[0].url;
               }
-
               console.log(item.images);
               return (
-                <div className=" flex flex-col items-center">
-                  <img className="" src={imgUrl} width={100} />
-                  <h1 className="text-slate-300 text-sm">{item.name}</h1>
-                </div>
+                <motion.button
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <div className=" flex flex-col items-center justify-center cursor-pointer">
+                    <img className="" src={imgUrl} width={100} />
+                    <h1 className="text-slate-300 text-xs">{item.name}</h1>
+                  </div>
+                </motion.button>
               );
             })}
           </div>
