@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import AnimatedCard from "./AnimatedCard.js";
 
 function Login() {
   const authUrl =
@@ -14,23 +14,20 @@ function Login() {
             library
           </h2>
         </div>
-
         <a href={authUrl}>
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="mx-auto border rounded-md p-2 bg-green-400 "
-          >
-            <div className="flex text-neutral-900  mx-2">
-              <img
-                src="spotify-black.svg"
-                width={25}
-                alt="spotify"
-                className="mx-2"
-              />
-              Log in with Spotify
+          <AnimatedCard className=" ">
+            <div className="mx-auto border rounded-md p-2 bg-green-400">
+              <div className="flex text-neutral-900  mx-2">
+                <img
+                  src="spotify-black.svg"
+                  width={25}
+                  alt="spotify"
+                  className="mx-2"
+                />
+                Log in with Spotify
+              </div>
             </div>
-          </motion.button>{" "}
+          </AnimatedCard>
         </a>
       </div>
     </>
