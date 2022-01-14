@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import AnimatedCard from "./AnimatedCard.js";
+import AnimatedCard from "../motionComponents/AnimatedCard.js";
 
 function Search({ spotify }) {
   const [result, setResult] = useState();

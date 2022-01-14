@@ -1,5 +1,5 @@
 import React from "react";
-import AnimatedCard from "./AnimatedCard.js";
+import AnimatedCard from "./motionComponents/AnimatedCard.js";
 
 function Login() {
   const authUrl =
