@@ -11,7 +11,7 @@ function Nav({ user }) {
             alt="record logo"
             className="animate-spin p-2"
           />
-          <h1 className="">Find Your Sound</h1>
+          <h1 className="invisible sm:visible">Find Your Sound</h1>
         </div>
         <div className=" flex items-center text-sm ">
           <img
@@ -21,6 +21,14 @@ function Nav({ user }) {
             width={25}
           />
           <h3 className="px-2">{user.name}</h3>
+          <a href="/">
+            <img
+              src="logout.svg"
+              className="cursor-pointer"
+              width={15}
+              alt="logout"
+            />
+          </a>
         </div>
       </div>
       <div className=""></div>
