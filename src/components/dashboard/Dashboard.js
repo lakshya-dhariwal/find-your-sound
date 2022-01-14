@@ -8,20 +8,22 @@ import Playlist from "./Playlist.js";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function Dashboard({ code }) {
+  //custom hooks
   const accessToken = useAuth(code);
   const spotify = useApi(accessToken);
+  //states
   const [user, setUser] = useState({
     userName: "",
     userId: "",
-    image: "avata.png",
+    image: "avatar.png",
   });
+  const [discoverPlaylist, setDiscoverPlaylist] = useState();
 
   useEffect(() => {
     if (!accessToken) {
       console.log("empty access token");
       return;
     }
-
     spotify.getMe().then(
       (data) => {
         let img = "avatar.png";
@@ -46,13 +48,16 @@ function Dashboard({ code }) {
         <Nav user={user} />
         <Switch>
           <Route path="/discover/:id">
-            <Discover spotify={spotify} />
+            <Discover spotify={spotify} discoverPlaylist={discoverPlaylist} />
           </Route>
           <Route path="/playlist">
             <Playlist />
           </Route>
           <Route path="/">
-            <Search spotify={spotify} />
+            <Search
+              spotify={spotify}
+              setDiscoverPlaylist={setDiscoverPlaylist}
+            />
           </Route>
         </Switch>
       </BrowserRouter>
