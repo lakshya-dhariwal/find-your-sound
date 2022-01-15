@@ -42,7 +42,14 @@ function Nav({ user }) {
           </a>
         </div>
       </div>
-      <div className=""></div>
+      <div className="text-slate-100 absolute right-2">
+        <Link to="/playlist">
+          <div className="flex items-center">
+            <h2 className="px-2">Playlist</h2>
+            <img src="playlist.svg" width={30} />
+          </div>
+        </Link>
+      </div>
     </>
   );
 }
