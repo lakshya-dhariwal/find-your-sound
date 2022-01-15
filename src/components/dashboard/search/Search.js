@@ -8,14 +8,15 @@ function Search({ spotify, setDiscoverPlaylist }) {
   const history = useHistory();
   const [result, setResult] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState();
 
-  const searchHandler = (e) => {
+  const searchSubmitHandler = (e) => {
+    e.preventDefault();
     if (!spotify) {
       console.log("empty access token");
       return;
     }
-    const query = e.target.value;
-    spotify.searchPlaylists(query).then(
+    spotify.searchPlaylists(searchQuery).then(
       (data) => {
         setResult(data.body.playlists.items);
         setIsLoading(false);
@@ -27,8 +28,8 @@ function Search({ spotify, setDiscoverPlaylist }) {
   };
 
   const suggestedSearchHandler = (q) => {
-    console.log(q);
-    spotify.searchPlaylists(q).then(
+    setSearchQuery(q);
+    spotify.searchPlaylists(searchQuery).then(
       (data) => {
         setResult(data.body.playlists.items);
         setIsLoading(false);
@@ -65,18 +66,24 @@ function Search({ spotify, setDiscoverPlaylist }) {
 
   return (
     <>
-      <div className="text-slate-100 px-10">
+      <div className="text-slate-100 px-10 ">
         <Link to="/">Search</Link>
       </div>
-      <div className="flex flex-col items-center ">
+      <div className="flex flex-col items-center ml-1 ">
         <div className="flex flex-col items-center p-2 m-2 min-w-full">
           <h1 className="text-slate-100 pb-2">Search for a playlist</h1>
-          <input
-            type="text"
-            className="mx-3 w-2/3 md:w-96 text-slate-800 text-center "
-            placeholder=""
-            onChange={searchHandler}
-          />
+          <form className="h-9" onSubmit={searchSubmitHandler}>
+            <input
+              type="text"
+              className="  md:w-96 text-slate-800 bg-slate-100  text-center h-full rounded-l-3xl "
+              placeholder=""
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <button className="bg-slate-100 text-slate-900 h-full p-1 rounded-r-3xl px-3 ">
+              <img className="" src="search.svg" width={12} alt="search" />
+            </button>
+          </form>
         </div>
         <SuggestedSearch
           spotify={spotify}
