@@ -10,20 +10,24 @@
 
 @keyframes colorchange {
   0% {
-    background: #ffd9df;
-    color: rgb(192, 71, 71);
-  }
-  33% {
     background: #cffff1;
     color: rgb(82, 211, 183);
+  }
+  33% {
+    background: #ffd9df;
+    color: rgb(186, 89, 195);
   }
   66% {
     background: #f5f69a;
     color: rgb(251, 176, 35);
   }
-  100% {
+  70% {
     background: #ffd9df;
-    color: rgb(186, 89, 195);
+    color: rgb(192, 71, 71);
+  }
+  100% {
+    background: #cffff1;
+    color: rgb(82, 211, 183);
   }
 }
 

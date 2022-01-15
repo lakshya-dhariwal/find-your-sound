@@ -42,14 +42,12 @@ function Discover({ spotify, discoverPlaylist }) {
         ) : (
           <div className="grid grid-cols-4 md:grid-cols-10 gap-x-1 max-h-fit">
             {tracks.map((item) => {
-              console.log(item);
               let imgUrl;
               if (!item.track.album.images[0]) {
                 imgUrl = "album.png";
               } else {
                 imgUrl = item.track.album.images[0].url;
               }
-              console.log(item);
               return (
                 <SongTrack
                   setDisplay={setDisplay}

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react/cjs/react.development";
-import AnimatedCard from "../../motionComponents/AnimatedCard";
+import { motion } from "framer-motion";
 function SongTrack({ imgUrl, id, audioUrl, setDisplay, song, artist }) {
   const [audio, setAudio] = useState(new Audio(audioUrl));
   const pause = () => {
@@ -25,10 +25,24 @@ function SongTrack({ imgUrl, id, audioUrl, setDisplay, song, artist }) {
     setDisplay({ song, artist, image: imgUrl, warn: false });
   };
   return (
-    <div onMouseOver={play} onMouseOut={pause}>
-      <AnimatedCard>
-        <img src={imgUrl} />
-      </AnimatedCard>
+    <div
+      className="relative hover:border hover:border-cyan-400"
+      onMouseOver={play}
+      onMouseOut={pause}
+    >
+      <motion.img
+        whileTap={{ scale: "0.8" }}
+        className="absolute left-0 top-0 w-4 sm:w-8 p-1 cursor-pointer"
+        src="bookmark.svg"
+      />
+
+      <motion.img
+        whileTap={{ scale: "0.8" }}
+        className="absolute top-0 right-0 w-4 sm:w-8 p-1 cursor-pointer"
+        src="like.svg"
+      />
+
+      <img onHover={{ scale: 1.1 }} src={imgUrl} />
     </div>
   );
 }
