@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { getSuggestedQuery } from "@testing-library/react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import AnimatedCard from "../motionComponents/AnimatedCard.js";
 
@@ -6,6 +7,7 @@ function Search({ spotify, setDiscoverPlaylist }) {
   const history = useHistory();
   const [result, setResult] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
   const searchHandler = (e) => {
     if (!spotify) {
       console.log("empty access token");
@@ -13,6 +15,19 @@ function Search({ spotify, setDiscoverPlaylist }) {
     }
     const query = e.target.value;
     spotify.searchPlaylists(query).then(
+      (data) => {
+        setResult(data.body.playlists.items);
+        setIsLoading(false);
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
+  };
+
+  const suggestedSearchHandler = (q) => {
+    console.log(q);
+    spotify.searchPlaylists(q).then(
       (data) => {
         setResult(data.body.playlists.items);
         setIsLoading(false);
@@ -46,25 +61,109 @@ function Search({ spotify, setDiscoverPlaylist }) {
       }
     );
   };
+
   return (
     <div className="flex flex-col items-center ">
       <div className="flex flex-col items-center p-2 m-2 min-w-full">
-        <h1 className="text-slate-400">Find your sound</h1>
+        <h1 className="text-slate-100 pb-2">Search for a playlist</h1>
         <input
           type="text"
-          className="mx-3 w-2/3 placeholder-slate-800 text-center"
+          className="mx-3 w-2/3 md:w-96 text-slate-800 text-center "
           placeholder=""
           onChange={searchHandler}
         />
       </div>
+      <div className="grid grid-cols-3 lg:grid-cols-6 text-center mb-4">
+        <AnimatedCard>
+          <div onClick={() => suggestedSearchHandler("Discover Weekly")}>
+            <h2 className="px-2 m-2 border rounded-2xl text-slate-200 border-sky-900 hover:bg-sky-900 cursor-pointer h-fit">
+              Discover Weekly
+            </h2>
+          </div>
+        </AnimatedCard>
+        <AnimatedCard onClick={() => suggestedSearchHandler("Missed Hits")}>
+          <div onClick={() => suggestedSearchHandler("Discover Weekly")}>
+            <h2 className="px-2 m-2 border rounded-2xl text-slate-200 border-sky-900 hover:bg-sky-900 cursor-pointer h-fit">
+              Missed Hits
+            </h2>
+          </div>
+        </AnimatedCard>
+        <AnimatedCard>
+          <div onClick={() => suggestedSearchHandler("Time Capsule")}>
+            <h2 className="px-2 m-2 border rounded-2xl text-slate-200 border-sky-900 hover:bg-sky-900 cursor-pointer h-fit">
+              Time Capsule
+            </h2>
+          </div>
+        </AnimatedCard>
+        <AnimatedCard>
+          <div className="" onClick={() => suggestedSearchHandler("Top Hits")}>
+            <h2 className="px-2 m-2 border rounded-2xl text-slate-300 border-sky-900 hover:bg-slate-ky cursor-pointer h-fit">
+              Top Hits
+            </h2>
+          </div>
+        </AnimatedCard>
+        <AnimatedCard>
+          <div onClick={() => suggestedSearchHandler("Release Radar")}>
+            <h2 className="px-2 m-2 border rounded-2xl text-slate-200 border-sky-900 hover:bg-sky-900 cursor-pointer h-fit">
+              Release Radar
+            </h2>
+          </div>
+        </AnimatedCard>
+        <AnimatedCard>
+          <div onClick={() => suggestedSearchHandler("This is")}>
+            <h2 className="px-2 m-2 border rounded-2xl text-slate-200 border-sky-900 hover:bg-sky-900 cursor-pointer h-fit">
+              This is
+            </h2>
+          </div>
+        </AnimatedCard>
+        <AnimatedCard onClick={() => suggestedSearchHandler("Rock Classics")}>
+          <div onClick={() => suggestedSearchHandler("Rock Classics")}>
+            <h2 className="px-2 m-2 border rounded-2xl text-slate-200 border-sky-900 hover:bg-sky-900 cursor-pointer h-fit">
+              Rock Classics
+            </h2>
+          </div>
+        </AnimatedCard>
+        <AnimatedCard>
+          <div onClick={() => suggestedSearchHandler("Alternative Rock")}>
+            <h2 className="px-2 m-2 border rounded-2xl text-slate-200 border-sky-900 hover:bg-sky-900 cursor-pointer h-fit">
+              Alternative Rock
+            </h2>
+          </div>
+        </AnimatedCard>
+        <AnimatedCard>
+          <div onClick={() => suggestedSearchHandler("Indie")}>
+            <h2 className="px-2 m-2 border rounded-2xl text-slate-200 border-sky-900 hover:bg-sky-900 cursor-pointer h-fit">
+              Indie
+            </h2>
+          </div>
+        </AnimatedCard>
+        <AnimatedCard>
+          <div onClick={() => suggestedSearchHandler("Chill Hits")}>
+            <h2 className="px-2 m-2 border rounded-2xl text-slate-200 border-sky-900 hover:bg-sky-900 cursor-pointer h-fit">
+              Chill Hits
+            </h2>
+          </div>
+        </AnimatedCard>
+        <AnimatedCard>
+          <div className="" onClick={() => suggestedSearchHandler("Pop")}>
+            <h2 className="px-2 m-2 border rounded-2xl text-slate-200 border-sky-900 hover:bg-sky-900 cursor-pointer h-fit">
+              Pop
+            </h2>
+          </div>
+        </AnimatedCard>
+        <AnimatedCard>
+          <div onClick={() => suggestedSearchHandler("Workout")}>
+            <h2 className="px-2 m-2 border rounded-2xl text-slate-200 border-sky-900 hover:bg-sky-900 cursor-pointer h-fit">
+              Workout
+            </h2>
+          </div>
+        </AnimatedCard>
+      </div>
       <div className=" w-2/3 min-h-3/4 min-w-full">
         {isLoading ? (
-          <h1 className="text-center text-stone-100">
-            Search for a Playlist to discover from .<br /> Example Search
-            DISCOVER WEEKLY , LOFI , ALTERNATIVE ROCK{" "}
-          </h1>
+          ""
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-6">
             {result.map((item) => {
               console.log(item);
               let imgUrl;
@@ -75,9 +174,13 @@ function Search({ spotify, setDiscoverPlaylist }) {
               }
               console.log(item.images);
               return (
-                <div key={item.id} onClick={() => playlistHandler(item.id)}>
-                  <AnimatedCard>
-                    <div className=" flex flex-col items-center cursor-pointer">
+                <div
+                  classNmae="min-w-full"
+                  key={item.id}
+                  onClick={() => playlistHandler(item.id)}
+                >
+                  <AnimatedCard className="min-w-full">
+                    <div className=" flex flex-col items-center cursor-pointer justify-center w-28">
                       <img className="" src={imgUrl} width={100} />
                       <h1 className="text-slate-300 text-xs">{item.name}</h1>
                     </div>
