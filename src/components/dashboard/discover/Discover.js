@@ -58,6 +58,7 @@ function Discover({ spotify, discoverPlaylist }) {
                   song={item.track.name}
                   artist={item.track.artists[0].name}
                   uri={item.track.uri}
+                  spotify={spotify}
                 />
               );
             })}
