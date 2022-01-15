@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth.js";
 import useApi from "../../hooks/useApi.js";
-import Nav from "../Nav.js";
-import Search from "./Search.js";
-import Discover from "./Discover.js";
+import Header from "../Nav.js";
+import Search from "./search/Search.js";
+import Discover from "./discover/Discover.js";
 import Playlist from "./Playlist.js";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -45,7 +45,7 @@ function Dashboard({ code }) {
   return (
     <>
       <BrowserRouter>
-        <Nav user={user} />
+        <Header user={user} />
         <Switch>
           <Route path="/discover">
             <Discover spotify={spotify} discoverPlaylist={discoverPlaylist} />
