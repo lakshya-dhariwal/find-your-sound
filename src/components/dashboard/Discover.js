@@ -20,7 +20,7 @@ function Discover({ spotify, discoverPlaylist }) {
 
   return (
     <div className="text-slate-50">
-      <h1 className="text-slate-50">Discover</h1>
+      <h1 className="text-slate-50 px-10">Discover</h1>
       <div className="flex items-center  px-10 mt-5">
         <img
           src={discoverPlaylist.image}
@@ -32,9 +32,17 @@ function Discover({ spotify, discoverPlaylist }) {
           <h2 className="text-xs">by {discoverPlaylist.author}</h2>
         </div>
       </div>
+      <div className=" text-center text-sm flex items-center justify-center my-3">
+        <div className="flex rounded-3xl border w-80 items-center justify-center p-1 text-stone-300  border-slate-500 text-center">
+          <h1 className="text-center flex ">
+            <img src="info.svg" alt="info" width={30} className="px-2" />
+            Hover to play Click to add to playlist
+          </h1>
+        </div>
+      </div>
       <div className=" w-2/3 min-h-3/4 min-w-full">
         {isLoading ? (
-          "Loading"
+          <h1 className="text-slate-50">Loading...</h1>
         ) : (
           <div className="grid grid-cols-4 md:grid-cols-10 gap-x-1 max-h-fit">
             {tracks.map((item) => {
