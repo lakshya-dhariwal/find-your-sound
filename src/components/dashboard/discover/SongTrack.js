@@ -26,7 +26,7 @@ function SongTrack({ imgUrl, id, audioUrl, setDisplay, song, artist }) {
   };
   return (
     <div
-      className="relative hover:border hover:border-cyan-400"
+      className="relative  hover:border-2 hover:border-sky-500"
       onMouseOver={play}
       onMouseOut={pause}
     >
