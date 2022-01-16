@@ -90,11 +90,11 @@ function Search({ spotify, setDiscoverPlaylist }) {
           setResult={setResult}
           setIsLoading={setIsLoading}
         />
-        <div className=" w-2/3 min-h-3/4 min-w-full">
+        <div className="  min-h-3/4 min-w-full flex items-center justify-center ">
           {isLoading ? (
             ""
           ) : (
-            <div className="grid grid-cols-3 md:grid-cols-5 gap-6">
+            <div className="grid grid-cols-3 md:grid-cols-6 m-w-full sm:w-3/4 lg:gird-cols-7 gap-6">
               {result.map((item) => {
                 console.log(item);
                 let imgUrl;
@@ -106,12 +106,12 @@ function Search({ spotify, setDiscoverPlaylist }) {
                 console.log(item.images);
                 return (
                   <div
-                    classNmae="min-w-full"
+                    className="flex items-between n"
                     key={item.id}
                     onClick={() => playlistHandler(item.id)}
                   >
-                    <AnimatedCard className="min-w-full">
-                      <div className=" flex flex-col items-center cursor-pointer justify-center w-28">
+                    <AnimatedCard className=" ">
+                      <div className=" flex flex-col items-center cursor-pointer justify-between w-28">
                         <img className="" src={imgUrl} width={100} />
                         <h1 className="text-slate-300 text-xs">{item.name}</h1>
                       </div>
