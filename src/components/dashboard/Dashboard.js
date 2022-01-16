@@ -18,6 +18,8 @@ function Dashboard({ code }) {
     image: "avatar.png",
   });
   const [discoverPlaylist, setDiscoverPlaylist] = useState();
+  const [playlist, setPlaylist] = useState([]);
+
   useEffect(() => {
     if (!accessToken) {
       console.log("empty access token");
@@ -47,10 +49,19 @@ function Dashboard({ code }) {
         <Nav user={user} />
         <Switch>
           <Route path="/discover">
-            <Discover spotify={spotify} discoverPlaylist={discoverPlaylist} />
+            <Discover
+              spotify={spotify}
+              discoverPlaylist={discoverPlaylist}
+              playlist={playlist}
+              setPlaylist={setPlaylist}
+            />
           </Route>
           <Route path="/playlist">
-            <Playlist spotify={spotify}/>
+            <Playlist
+              spotify={spotify}
+              playlist={playlist}
+              setPlaylist={setPlaylist}
+            />
           </Route>
           <Route path="/">
             <Search

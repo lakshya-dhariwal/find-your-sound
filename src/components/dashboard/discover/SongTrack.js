@@ -1,32 +1,23 @@
 import React from "react";
 import { useState } from "react/cjs/react.development";
 import { motion } from "framer-motion";
-import { useStoreActions } from "easy-peasy";
 import { v4 as uuidv4 } from "uuid";
 function SongTrack({
   imgUrl,
   id,
+
   audioUrl,
   setDisplay,
   song,
   artist,
   uri,
   spotify,
+  playlist,
+  setPlaylist,
 }) {
   //states
   const [audio, setAudio] = useState(new Audio(audioUrl));
-  const uuid = uuidv4();
-  const [value, setValue] = useState({
-    id: uuid,
-    imgUrl,
-    spotifyId: id,
-    audioUrl,
-    name: song,
-    artist,
-    uri,
-  });
-  //for easy peasy actions
-  const addSong = useStoreActions((actions) => actions.addSong);
+
   const likeSongHandler = (id) => {
     console.log(id);
     spotify.addToMySavedTracks([id]).then(
@@ -40,8 +31,18 @@ function SongTrack({
       }
     );
   };
-  const addSongHandler = (value) => {
-    addSong(value);
+  const addSongHandler = () => {
+    const value = {
+      uuid: uuidv4(),
+      imgUrl,
+      spotifyId: id,
+      audioUrl,
+      name: song,
+      artist,
+      uri,
+    };
+    setPlaylist([...playlist, value]);
+    console.log(playlist);
     setDisplay({ success: "Song added to Playlist Creator!" });
   };
   //song handlers
@@ -76,7 +77,7 @@ function SongTrack({
         whileTap={{ scale: "0.8" }}
         className="absolute left-0 top-0 w-4 sm:w-8 p-1 cursor-pointer"
         src="bookmark.svg"
-        onClick={() => addSongHandler(value)}
+        onClick={() => addSongHandler()}
       />
 
       <motion.img

@@ -4,7 +4,7 @@ function Info({ discoverPlaylist, display }) {
   return (
     <div>
       <div className="text-slate-100 px-10">
-        <Link to="/">Search</Link> &#62; <Link to="/discover">Discover</Link>
+        <Link to="/">Search</Link> → <Link to="/discover">Discover</Link>
       </div>
       <div className="text-slate-50 ">
         <div className="flex items-start justify-start px-10 mt-5">

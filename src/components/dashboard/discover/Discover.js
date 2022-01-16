@@ -4,7 +4,13 @@ import { Link } from "react-router-dom";
 import SongTrack from "./SongTrack";
 import Info from "./Info";
 
-function Discover({ spotify, discoverPlaylist, setTotal }) {
+function Discover({
+  spotify,
+  discoverPlaylist,
+  setTotal,
+  playlist,
+  setPlaylist,
+}) {
   const [tracks, setTracks] = useState();
   const [display, setDisplay] = useState({
     song: "",
@@ -61,6 +67,8 @@ function Discover({ spotify, discoverPlaylist, setTotal }) {
                   uri={item.track.uri}
                   spotify={spotify}
                   setTotal={setTotal}
+                  playlist={playlist}
+                  setPlaylist={setPlaylist}
                 />
               );
             })}
