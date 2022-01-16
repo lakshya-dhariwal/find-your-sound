@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Nav({ user }) {
+function Nav({ user, total }) {
   return (
     <>
       <div className="text flex items-center  justify-between">
@@ -45,8 +45,8 @@ function Nav({ user }) {
       <div className="text-slate-100 absolute right-2">
         <Link to="/playlist">
           <div className="flex items-center">
-            <h2 className="px-2">Playlist</h2>
-            <img src="playlist.svg" width={30} />
+            <h2 className="">Playlist</h2>
+            <img src="playlist.svg" className="px-1" width={30} />
           </div>
         </Link>
       </div>

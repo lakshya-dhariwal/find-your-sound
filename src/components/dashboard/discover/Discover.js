@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import SongTrack from "./SongTrack";
 import Info from "./Info";
 
-function Discover({ spotify, discoverPlaylist }) {
+function Discover({ spotify, discoverPlaylist, setTotal }) {
   const [tracks, setTracks] = useState();
   const [display, setDisplay] = useState({
     song: "",
     image: "",
     artist: "",
     warn: "",
+    success: "",
   });
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
@@ -59,6 +60,7 @@ function Discover({ spotify, discoverPlaylist }) {
                   artist={item.track.artists[0].name}
                   uri={item.track.uri}
                   spotify={spotify}
+                  setTotal={setTotal}
                 />
               );
             })}

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react/cjs/react.development";
 import { motion } from "framer-motion";
-import SpotifyWebApi from "spotify-web-api-node";
+import { useStoreActions } from "easy-peasy";
 function SongTrack({
   imgUrl,
   id,
@@ -11,12 +11,37 @@ function SongTrack({
   artist,
   uri,
   spotify,
+  
 }) {
+  //states
   const [audio, setAudio] = useState(new Audio(audioUrl));
+  const [value, setValue] = useState({
+    imgUrl,
+    id,
+    audioUrl,
+    name: song,
+    artist,
+    uri,
+  });
+  //for easy peasy actions
+  const addSong = useStoreActions((actions) => actions.addSong);
+  const likeSongHandler = (id) => {
+    console.log(id);
+    spotify.addToMySavedTracks([id]).then(
+      (data) => {
+        if (data.statusCode == 200) {
+          setDisplay({ success: "Song Liked!" });
+        }
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
+  };
+  //song handlers
   const pause = () => {
     console.log(audioUrl);
     audio.pause();
-    // setDisplay({ song: " ", artist: " " });
     console.log("pause", id);
   };
   const play = () => {
@@ -34,17 +59,7 @@ function SongTrack({
     }
     setDisplay({ song, artist, image: imgUrl, warn: false });
   };
-  const likeSongHandler = (id) => {
-    console.log(id);
-    spotify.addToMySavedTracks([id]).then(
-      (data) => {
-        console.log(data.statusCode);
-      },
-      (err) => {
-        console.error(err);
-      }
-    );
-  };
+
   return (
     <div
       className="relative  hover:border-2 hover:border-sky-500"
@@ -55,6 +70,7 @@ function SongTrack({
         whileTap={{ scale: "0.8" }}
         className="absolute left-0 top-0 w-4 sm:w-8 p-1 cursor-pointer"
         src="bookmark.svg"
+        onClick={() => addSong(value)}
       />
 
       <motion.img

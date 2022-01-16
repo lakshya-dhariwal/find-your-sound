@@ -31,6 +31,13 @@ function Info({ discoverPlaylist, display }) {
               ) : (
                 ""
               )}
+              {display.success ? (
+                <h1 className="border mt-3 px-2 text-xs sm:text-sm text-center  text-green-500 border-green-500 rounded-2xl">
+                  {display.success}
+                </h1>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth.js";
 import useApi from "../../hooks/useApi.js";
-import Header from "../Nav.js";
+import Nav from "../Nav.js";
 import Search from "./search/Search.js";
 import Discover from "./discover/Discover.js";
 import Playlist from "./Playlist.js";
@@ -18,7 +18,6 @@ function Dashboard({ code }) {
     image: "avatar.png",
   });
   const [discoverPlaylist, setDiscoverPlaylist] = useState();
-
   useEffect(() => {
     if (!accessToken) {
       console.log("empty access token");
@@ -45,7 +44,7 @@ function Dashboard({ code }) {
   return (
     <>
       <BrowserRouter>
-        <Header user={user} />
+        <Nav user={user} />
         <Switch>
           <Route path="/discover">
             <Discover spotify={spotify} discoverPlaylist={discoverPlaylist} />
