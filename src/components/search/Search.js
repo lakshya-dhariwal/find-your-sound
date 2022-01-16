@@ -1,7 +1,7 @@
 import { getSuggestedQuery } from "@testing-library/react";
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import AnimatedCard from "../../motionComponents/AnimatedCard.js";
+import AnimatedCard from "../motionComponents/AnimatedCard.js";
 import SuggestedSearch from "./SuggestedSearch.js";
 
 function Search({ spotify, setDiscoverPlaylist }) {

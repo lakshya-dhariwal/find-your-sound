@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth.js";
 import useApi from "../../hooks/useApi.js";
 import Nav from "../Nav.js";
-import Search from "./search/Search.js";
-import Discover from "./discover/Discover.js";
+import Search from "../search/Search.js";
+import Discover from "../discover/Discover.js";
 import Playlist from "../playlist/Playlist.js";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 

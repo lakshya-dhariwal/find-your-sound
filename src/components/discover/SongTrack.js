@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 function SongTrack({
   imgUrl,
   id,
-
   audioUrl,
   setDisplay,
   song,
@@ -36,7 +35,6 @@ function SongTrack({
       uuid: uuidv4(),
       imgUrl,
       spotifyId: id,
-      audioUrl,
       name: song,
       artist,
       uri,

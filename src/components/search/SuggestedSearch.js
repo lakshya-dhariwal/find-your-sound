@@ -1,5 +1,5 @@
 import React from "react";
-import AnimatedCard from "../../motionComponents/AnimatedCard.js";
+import AnimatedCard from "../motionComponents/AnimatedCard.js";
 function SuggestedSearch({ spotify, setResult, setIsLoading }) {
   const suggestedSearchHandler = (q) => {
     console.log(q);

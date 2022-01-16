@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import SongSearch from "./SongSearch.js";
 function Playlist({ spotify, playlist, setPlaylist }) {
   const deleteSongHandler = (uuid) => {
     const newPlaylist = playlist.filter((song) => {
@@ -15,7 +15,11 @@ function Playlist({ spotify, playlist, setPlaylist }) {
         <div className="px-7 mx-2 text-xs ">← Home</div>
       </Link>
       <h1 className="px-7 text-lg my-1">Playlist Creator</h1>
-
+      <SongSearch
+        playlist={playlist}
+        setPlaylist={setPlaylist}
+        spotify={spotify}
+      />
       <ul className="grid grid-cols-3 md:grid-cols-7 sm:grid-cols-4 ">
         {playlist
           ? playlist.map((song) => {
