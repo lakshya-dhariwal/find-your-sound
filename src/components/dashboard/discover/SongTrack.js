@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react/cjs/react.development";
 import { motion } from "framer-motion";
 import { useStoreActions } from "easy-peasy";
+import { v4 as uuidv4 } from "uuid";
 function SongTrack({
   imgUrl,
   id,
@@ -14,9 +15,11 @@ function SongTrack({
 }) {
   //states
   const [audio, setAudio] = useState(new Audio(audioUrl));
+  const uuid = uuidv4();
   const [value, setValue] = useState({
+    id: uuid,
     imgUrl,
-    id,
+    spotifyId: id,
     audioUrl,
     name: song,
     artist,
