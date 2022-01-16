@@ -4,7 +4,7 @@ import useApi from "../../hooks/useApi.js";
 import Nav from "../Nav.js";
 import Search from "./search/Search.js";
 import Discover from "./discover/Discover.js";
-import Playlist from "./Playlist.js";
+import Playlist from "../playlist/Playlist.js";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function Dashboard({ code }) {
@@ -50,7 +50,7 @@ function Dashboard({ code }) {
             <Discover spotify={spotify} discoverPlaylist={discoverPlaylist} />
           </Route>
           <Route path="/playlist">
-            <Playlist />
+            <Playlist spotify={spotify}/>
           </Route>
           <Route path="/">
             <Search
