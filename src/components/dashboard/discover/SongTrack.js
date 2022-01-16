@@ -11,7 +11,6 @@ function SongTrack({
   artist,
   uri,
   spotify,
-  
 }) {
   //states
   const [audio, setAudio] = useState(new Audio(audioUrl));
@@ -37,6 +36,10 @@ function SongTrack({
         console.error(err);
       }
     );
+  };
+  const addSongHandler = (value) => {
+    addSong(value);
+    setDisplay({ success: "Song added to Playlist Creator!" });
   };
   //song handlers
   const pause = () => {
@@ -70,7 +73,7 @@ function SongTrack({
         whileTap={{ scale: "0.8" }}
         className="absolute left-0 top-0 w-4 sm:w-8 p-1 cursor-pointer"
         src="bookmark.svg"
-        onClick={() => addSong(value)}
+        onClick={() => addSongHandler(value)}
       />
 
       <motion.img
