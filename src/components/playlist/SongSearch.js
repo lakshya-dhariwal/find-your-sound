@@ -36,8 +36,8 @@ function SongSearch({ spotify, playlist, setPlaylist }) {
     console.log(playlist);
   };
   return (
-    <div className="flex items-center">
-      <div className="w-2/3">
+    <div className="flex justify-center w-full">
+      <div className="w-3/4">
         <ReactSearchAutocomplete
           items={items}
           onSearch={handleOnSearch}
