@@ -33,7 +33,6 @@ function SongSearch({ spotify, playlist, setPlaylist }) {
       uri: item.uri,
     };
     setPlaylist([...playlist, value]);
-    console.log(playlist);
   };
   return (
     <div className="flex justify-center w-full">

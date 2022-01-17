@@ -2,7 +2,6 @@ import React from "react";
 import AnimatedCard from "../motionComponents/AnimatedCard.js";
 function SuggestedSearch({ spotify, setResult, setIsLoading }) {
   const suggestedSearchHandler = (q) => {
-    console.log(q);
     spotify.searchPlaylists(q).then(
       (data) => {
         setResult(data.body.playlists.items);

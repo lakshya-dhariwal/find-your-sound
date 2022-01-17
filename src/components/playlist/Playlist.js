@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SongSearch from "./SongSearch.js";
+import { v4 as uuidv4 } from "uuid";
 function Playlist({ spotify, playlist, setPlaylist }) {
   const [playlistName, setPlaylistName] = useState(
     "Playlist by Find Your Sound"
   );
   const deleteSongHandler = (uuid) => {
     const newPlaylist = playlist.filter((song) => {
-      return song.uuid != uuid;
+      return song.uuid !== uuid;
     });
     setPlaylist(newPlaylist);
   };
-  console.log(playlist);
   return (
     <div className="text-slate-50 mx-5">
       <Link to="/">
@@ -29,9 +29,9 @@ function Playlist({ spotify, playlist, setPlaylist }) {
           {playlist
             ? playlist.map((song) => {
                 return (
-                  <li className=" text-center ">
+                  <li className=" text-center " key={uuidv4()}>
                     <div className=" mx-3 relative flex  items-center justify-between h-full pt-1 w-full  m-h-fit">
-                      <img src={song.imgUrl} width={50} />{" "}
+                      <img src={song.imgUrl} width={50} alt="" />
                       <div className="p-3">
                         <h1 className="text-sm">{song.name}</h1>
                         <h2 className="text-xs ">{song.artist}</h2>

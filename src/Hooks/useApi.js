@@ -2,7 +2,6 @@ import SpotifyWebApi from "spotify-web-api-node";
 
 export default function useApi(accessToken) {
   if (!accessToken) {
-    console.log("empty access token");
     return;
   }
   let spotify = new SpotifyWebApi({

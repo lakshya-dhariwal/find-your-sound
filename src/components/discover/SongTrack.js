@@ -15,13 +15,14 @@ function SongTrack({
   setPlaylist,
 }) {
   //states
-  const [audio, setAudio] = useState(new Audio(audioUrl));
+
+  let audio = new Audio(audioUrl);
 
   const likeSongHandler = (id) => {
     console.log(id);
     spotify.addToMySavedTracks([id]).then(
       (data) => {
-        if (data.statusCode == 200) {
+        if (data.statusCode === 200) {
           setDisplay({ success: "Song Liked!" });
         }
       },
@@ -76,6 +77,7 @@ function SongTrack({
         className="absolute left-0 top-0 w-4 sm:w-8 p-1 cursor-pointer"
         src="bookmark.svg"
         onClick={() => addSongHandler()}
+        alt=""
       />
 
       <motion.img
@@ -83,9 +85,10 @@ function SongTrack({
         className="absolute top-0 right-0 w-4 sm:w-8 p-1 cursor-pointer"
         src="like.svg"
         onClick={() => likeSongHandler(id)}
+        alt=""
       />
 
-      <img onHover={{ scale: 1.1 }} src={imgUrl} />
+      <img onHover={{ scale: 1.1 }} src={imgUrl} alt="" />
     </div>
   );
 }

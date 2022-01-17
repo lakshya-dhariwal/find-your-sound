@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import Nav from "./components/Nav.js";
+import React from "react";
 import Dashboard from "./components/dashboard/Dashboard.js";
 import Login from "./components/Login.js";
 

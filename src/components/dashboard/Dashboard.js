@@ -22,7 +22,6 @@ function Dashboard({ code }) {
 
   useEffect(() => {
     if (!accessToken) {
-      console.log("empty access token");
       return;
     }
     spotify.getMe().then(
@@ -41,7 +40,7 @@ function Dashboard({ code }) {
         console.error(err);
       }
     );
-  }, [accessToken]);
+  }, [accessToken, spotify]);
 
   return (
     <>
