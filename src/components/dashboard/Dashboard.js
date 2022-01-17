@@ -60,6 +60,7 @@ function Dashboard({ code }) {
               spotify={spotify}
               playlist={playlist}
               setPlaylist={setPlaylist}
+              user={user}
             />
           </Route>
           <Route path="/">

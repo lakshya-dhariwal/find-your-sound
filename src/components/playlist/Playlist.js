@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SongSearch from "./SongSearch.js";
 import { v4 as uuidv4 } from "uuid";
-function Playlist({ spotify, playlist, setPlaylist }) {
+function Playlist({ spotify, playlist, setPlaylist, user }) {
   const [playlistName, setPlaylistName] = useState(
     "Playlist by Find Your Sound"
   );
@@ -12,12 +12,39 @@ function Playlist({ spotify, playlist, setPlaylist }) {
     });
     setPlaylist(newPlaylist);
   };
+  const playlistNameHandler = (e) => {
+    setPlaylistName(e.target.value);
+  };
+  const savePlaylistHandler = () => {
+    spotify.createPlaylist(user.userId, playlistName, { public: true }).then(
+      (data) => {
+        console.log(data);
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
+  };
   return (
     <div className="text-slate-50 mx-5">
       <Link to="/">
         <div className="px-7 mx-2 text-xs ">← Home</div>
       </Link>
       <h1 className="px-7 text-lg my-1">Playlist Creator</h1>
+      <div className="flex justify-center items-center">
+        <input
+          type="text"
+          placeholder="  Enter Playlist Name"
+          onChange={playlistNameHandler}
+          className="text-slate-800 text-center p-1 placeholder-slate-700 py-3"
+        />
+        <button
+          onClick={savePlaylistHandler}
+          className="bg-green-500 text-slate-800 p-1 px-2 py-3"
+        >
+          Save Playlist
+        </button>
+      </div>
       {/* <input type="text" onChange={(e) => playlistName(e.target.value)} /> */}
       <SongSearch
         playlist={playlist}
@@ -25,7 +52,7 @@ function Playlist({ spotify, playlist, setPlaylist }) {
         spotify={spotify}
       />
       <div className="w-full flex items-center">
-        <ul className="grid grid-cols-1 sm:grid-cols-3 mx-10 sm:mx-0 md:grid-cols-4 m-4 gap-10 sm:grid-cols-4 ">
+        <ul className="grid grid-cols-1 sm:grid-cols-3 mx-10 sm:mx-0 md:grid-cols-4 m-4 gap-10 sm:grid-cols-4 z-0 ">
           {playlist
             ? playlist.map((song) => {
                 return (

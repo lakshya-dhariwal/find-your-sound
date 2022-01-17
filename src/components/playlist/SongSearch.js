@@ -36,13 +36,15 @@ function SongSearch({ spotify, playlist, setPlaylist }) {
   };
   return (
     <div className="flex justify-center w-full">
-      <div className="w-3/4">
+      <div className="w-3/4 sm:w-2/3 my-7 ">
         <ReactSearchAutocomplete
+          className="z-2"
           items={items}
           onSearch={handleOnSearch}
           onSelect={handleOnSelect}
           autoFocus
           formatResult={formatResult}
+          placeholder="Add a Song"
         />
       </div>
     </div>
