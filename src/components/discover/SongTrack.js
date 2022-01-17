@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react/cjs/react.development";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { v4 as uuidv4 } from "uuid";
 function SongTrack({
@@ -16,7 +15,7 @@ function SongTrack({
 }) {
   //states
 
-  let audio = new Audio(audioUrl);
+  const [audio, setAudio] = useState(new Audio(audioUrl));
 
   const likeSongHandler = (id) => {
     console.log(id);
@@ -41,25 +40,25 @@ function SongTrack({
       uri,
     };
     setPlaylist([...playlist, value]);
-    console.log(playlist);
     setDisplay({ success: "Song added to Playlist Creator!" });
   };
   //song handlers
   const pause = () => {
-    console.log(audioUrl);
+    console.log("pause");
+    // console.log(audioUrl);
     audio.pause();
-    console.log("pause", id);
+    // console.log("pause", id);
   };
   const play = () => {
-    console.log(audioUrl);
+    // console.log(audioUrl);
     audio.play();
-    console.log("play", id);
+    // console.log("play", id);
     if (!audioUrl) {
       setDisplay({
         song,
         artist,
         image: imgUrl,
-        warn: "  No Preview Available  ",
+        // warn: "  No Preview Available  ",
       });
       return;
     }
