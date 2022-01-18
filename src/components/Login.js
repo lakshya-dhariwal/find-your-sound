@@ -7,6 +7,18 @@ function Login() {
   return (
     <>
       <div className="min-h-screen flex flex-col items-center justify-around logo ">
+        <a
+          href="https://github.com/lakshya-dhariwal/find-your-sound"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <img
+            src="github.svg"
+            alt="github"
+            width={50}
+            className="absolute right-0 top-0 hover:animate-pulse"
+          />
+        </a>
         <div className=" text-center">
           <h1 className="p-4  text-2xl">Find Your Sound</h1>
           <h2>
