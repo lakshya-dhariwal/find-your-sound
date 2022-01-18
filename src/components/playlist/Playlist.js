@@ -20,6 +20,7 @@ function Playlist({ spotify, playlist, setPlaylist }) {
     let tracks = [];
     playlist.map((track) => {
       tracks.push(track.uri);
+      return track;
     });
     spotify.createPlaylist(playlistName).then(
       (data) => {
@@ -44,32 +45,28 @@ function Playlist({ spotify, playlist, setPlaylist }) {
     );
   };
   return (
-    <div className="text-slate-50 mx-5">
-      <Link to="/">
-        <div className="px-7 mx-2 text-xs ">← Home</div>
-      </Link>
+    <div className="text-slate-50 mx-5 ">
+      <div className="w-20">
+        <Link to="/">
+          <div className="w-fit mx-2 text-xs ">← Home</div>
+        </Link>
+      </div>
       <h1 className="px-7 text-lg my-1">Playlist Creator</h1>
       <div className="flex justify-center items-center">
         <input
           type="text"
-          placeholder="  Enter Playlist Name"
+          className="h-10 md:w-96  bg-slate-100 text-center text-slate-800 placeholder-slate-700  rounded-l-3xl "
+          placeholder="Enter Playlist Name"
           onChange={playlistNameHandler}
-          className="text-slate-800 text-center p-1 placeholder-slate-700 py-3"
         />
         <button
           onClick={savePlaylistHandler}
-          className="bg-green-500 text-slate-800 p-1 px-2 py-3"
+          className="h-10 bg-slate-900 text-slate-500 p-1 rounded-r-3xl px-3 border border-gray-500 hover:text-slate-200"
         >
-          Save Playlist
+          <h1 className="text-xs sm:text-sm">Save Playlist</h1>
         </button>
       </div>
-      {/* <input type="text" onChange={(e) => playlistName(e.target.value)} /> */}
-      <SongSearch
-        playlist={playlist}
-        setPlaylist={setPlaylist}
-        spotify={spotify}
-      />
-      <div className="w-full flex items-center">
+      <div className="w-full flex items-center justify-center">
         <ul className="grid grid-cols-1 sm:grid-cols-3 mx-10 sm:mx-0 md:grid-cols-4 m-4 gap-10  z-0 ">
           {playlist
             ? playlist.map((song) => {
@@ -95,6 +92,13 @@ function Playlist({ spotify, playlist, setPlaylist }) {
             : "Add Songs from Discover"}
           {}
         </ul>
+      </div>
+      <div>
+        <SongSearch
+          playlist={playlist}
+          setPlaylist={setPlaylist}
+          spotify={spotify}
+        />
       </div>
     </div>
   );

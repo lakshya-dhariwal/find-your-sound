@@ -20,11 +20,11 @@ function Nav() {
           </div>
         </Link>
 
-        <div className=" flex items-center text-xs sm:text-sm">
+        <div className=" flex items-center w-16 text-xs sm:text-sm justify-between">
           <span>
             <img
               src="avatar.png"
-              className="rounded-full border border-slate-900"
+              className="rounded-full border border-slate-900 "
               width={25}
               alt=""
             />

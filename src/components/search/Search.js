@@ -80,7 +80,7 @@ function Search({ spotify, setDiscoverPlaylist }) {
           {isLoading ? (
             ""
           ) : (
-            <div className="grid grid-cols-3 md:grid-cols-6 m-w-full sm:w-3/4 lg:gird-cols-7 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 m-w-full sm:w-3/4 lg:gird-cols-7 gap-6">
               {result.map((item) => {
                 let imgUrl;
                 if (!item.images[0]) {
@@ -90,7 +90,7 @@ function Search({ spotify, setDiscoverPlaylist }) {
                 }
                 return (
                   <div
-                    className="flex items-between n"
+                    className="flex items-between "
                     key={item.id}
                     onClick={() => playlistHandler(item.id)}
                   >
