@@ -20,6 +20,7 @@ export default function useAuth(code) {
       .catch((e) => {
         window.location = "/";
         console.log(e);
+        alert('Authentication Failed :(')
       });
   }, [code]);
 
