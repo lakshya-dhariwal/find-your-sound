@@ -12,4 +12,5 @@ Streamline the process from discovery of music to addition to your library. Made
 - React
 - TailwindCSS
 - Framer Motion
-- Nodejs (for Auth Server)
+- Nodejs (for Auth Server) [Auth Server](https://github.com/lakshya-dhariwal/spotify-auth-server)
+
