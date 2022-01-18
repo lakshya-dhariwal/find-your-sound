@@ -25,7 +25,6 @@ function Playlist({ spotify, playlist, setPlaylist }) {
     spotify.createPlaylist(playlistName).then(
       (data) => {
         playlistId = data.body.id;
-        console.log("playlistId", playlistId);
         spotify.addTracksToPlaylist(playlistId, tracks).then(
           (data) => {
             if (data.statusCode === 201) {
@@ -35,7 +34,7 @@ function Playlist({ spotify, playlist, setPlaylist }) {
             }
           },
           (err) => {
-            console.error("add error", err);
+            console.error(err);
           }
         );
       },

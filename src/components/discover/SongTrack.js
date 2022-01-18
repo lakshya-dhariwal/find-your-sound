@@ -45,20 +45,16 @@ function SongTrack({
   //song handlers
   const pause = () => {
     console.log("pause");
-    // console.log(audioUrl);
     audio.pause();
-    // console.log("pause", id);
   };
   const play = () => {
-    // console.log(audioUrl);
     audio.play();
-    // console.log("play", id);
     if (!audioUrl) {
       setDisplay({
         song,
         artist,
         image: imgUrl,
-        // warn: "  No Preview Available  ",
+        warn: "  No Preview Available  ",
       });
       return;
     }
@@ -87,7 +83,7 @@ function SongTrack({
         alt=""
       />
 
-      <img onHover={{ scale: 1.1 }} src={imgUrl} alt="" />
+      <img src={imgUrl} alt="" />
     </div>
   );
 }
