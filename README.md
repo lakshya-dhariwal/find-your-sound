@@ -2,7 +2,7 @@
 
 Streamline the process from discovery of music to addition to your library. Made for Spotify.
 ---
-<iframe src="https://player.vimeo.com/video/667388858?h=1055c2e218&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+![video](https://player.vimeo.com/video/667388858?h=1055c2e218&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479)
 ![image](./demo/demo-1.png)
 ![image](./demo/demo-2.png)
 ![image](./demo/demo-3.png)
