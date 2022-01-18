@@ -16,7 +16,6 @@ function SongTrack({
   //states
 
   const [audio, setAudio] = useState();
-  setAudio(new Audio(audioUrl));
 
   const likeSongHandler = (id) => {
     console.log(id);
@@ -45,11 +44,13 @@ function SongTrack({
   };
   //song handlers
   const pause = () => {
-    console.log("pause");
-    audio.pause();
+    if (audio) {
+      audio.pause();
+    }
   };
-  const play = () => {
-    audio.play();
+  const play = async () => {
+    setAudio(new Audio(audioUrl));
+    await audio.play();
     if (!audioUrl) {
       setDisplay({
         song,
