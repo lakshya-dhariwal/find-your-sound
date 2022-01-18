@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Nav({ user }) {
+function Nav() {
   return (
     <>
       <div className="text flex items-center  justify-between">
@@ -22,18 +22,13 @@ function Nav({ user }) {
 
         <div className=" flex items-center text-xs sm:text-sm">
           <span>
-            {user.image ? (
-              <img
-                src={user.image}
-                className="rounded-full border border-slate-900"
-                width={25}
-                alt=""
-              />
-            ) : (
-              ""
-            )}
+            <img
+              src="avatar.png"
+              className="rounded-full border border-slate-900"
+              width={25}
+              alt=""
+            />
           </span>
-          <h3 className="px-2">{user.name}</h3>
           <a href="/">
             <img
               src="logout.svg"

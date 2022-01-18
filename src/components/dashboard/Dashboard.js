@@ -12,40 +12,16 @@ function Dashboard({ code }) {
   const accessToken = useAuth(code);
   const spotify = useApi(accessToken);
   //states
-  const [user, setUser] = useState({
-    userName: "",
-    userId: "",
-    image: "avatar.png",
-  });
+
   const [discoverPlaylist, setDiscoverPlaylist] = useState();
   const [playlist, setPlaylist] = useState([]);
 
-  useEffect(() => {
-    if (!accessToken) {
-      return;
-    }
-    spotify.getMe().then(
-      (data) => {
-        let img = "avatar.png";
-        if (data.body.images[0].url) {
-          img = data.body.images[0].url;
-        }
-        setUser({
-          name: data.body.display_name,
-          id: data.body.id,
-          image: img,
-        });
-      },
-      (err) => {
-        console.error(err);
-      }
-    );
-  }, [accessToken, spotify]);
+
 
   return (
     <>
       <BrowserRouter>
-        <Nav user={user} />
+        <Nav  />
         <Switch>
           <Route path="/discover">
             <Discover
@@ -60,7 +36,7 @@ function Dashboard({ code }) {
               spotify={spotify}
               playlist={playlist}
               setPlaylist={setPlaylist}
-              user={user}
+
             />
           </Route>
           <Route path="/">

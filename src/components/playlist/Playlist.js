@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SongSearch from "./SongSearch.js";
 import { v4 as uuidv4 } from "uuid";
-function Playlist({ spotify, playlist, setPlaylist, user }) {
+function Playlist({ spotify, playlist, setPlaylist }) {
   const [playlistName, setPlaylistName] = useState(
     "Playlist by Find Your Sound"
   );
@@ -16,7 +16,16 @@ function Playlist({ spotify, playlist, setPlaylist, user }) {
     setPlaylistName(e.target.value);
   };
   const savePlaylistHandler = () => {
-    spotify.createPlaylist(user.userId, playlistName, { public: true }).then(
+    let id;
+    spotify.getMe().then(
+      (data) => {
+        id = data.body.id;
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
+    spotify.createPlaylist(id, playlistName, { public: true }).then(
       (data) => {
         console.log(data);
       },
