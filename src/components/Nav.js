@@ -13,7 +13,6 @@ function Nav() {
                 width={40}
                 alt="record logo"
                 className="animate-spin"
-                alt="logo"
               />
             </div>
             <h1 className="invisible sm:visible">Find Your Sound</h1>

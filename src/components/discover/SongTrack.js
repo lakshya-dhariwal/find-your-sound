@@ -15,7 +15,8 @@ function SongTrack({
 }) {
   //states
 
-  const [audio, setAudio] = useState(new Audio(audioUrl));
+  const [audio, setAudio] = useState();
+  setAudio(new Audio(audioUrl));
 
   const likeSongHandler = (id) => {
     console.log(id);

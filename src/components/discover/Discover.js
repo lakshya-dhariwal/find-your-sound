@@ -28,7 +28,7 @@ function Discover({
         console.error(err);
       }
     );
-  }, []);
+  }, [discoverPlaylist, spotify]);
 
   return (
     <>
