@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { v4 as uuidv4 } from "uuid";
 function SongTrack({
@@ -44,12 +44,9 @@ function SongTrack({
   };
   //song handlers
   const pause = () => {
-    if (audio) {
-      audio.pause();
-    }
+    audio.pause();
   };
   const play = async () => {
-    setAudio(new Audio(audioUrl));
     await audio.play();
     if (!audioUrl) {
       setDisplay({
@@ -62,6 +59,9 @@ function SongTrack({
     }
     setDisplay({ song, artist, image: imgUrl, warn: false });
   };
+  useEffect(() => {
+    setAudio(new Audio(audioUrl));
+  }, [audioUrl]);
 
   return (
     <div
