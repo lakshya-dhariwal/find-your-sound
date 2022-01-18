@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth.js";
 import useApi from "../../hooks/useApi.js";
 import Nav from "../Nav.js";
@@ -16,12 +16,10 @@ function Dashboard({ code }) {
   const [discoverPlaylist, setDiscoverPlaylist] = useState();
   const [playlist, setPlaylist] = useState([]);
 
-
-
   return (
     <>
       <BrowserRouter>
-        <Nav  />
+        <Nav />
         <Switch>
           <Route path="/discover">
             <Discover
@@ -36,7 +34,6 @@ function Dashboard({ code }) {
               spotify={spotify}
               playlist={playlist}
               setPlaylist={setPlaylist}
-
             />
           </Route>
           <Route path="/">

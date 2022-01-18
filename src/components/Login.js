@@ -1,9 +1,9 @@
 import React from "react";
 import AnimatedCard from "./motionComponents/AnimatedCard.js";
+import data from "../constants/index.js";
 
 function Login() {
-  const authUrl =
-    "https://accounts.spotify.com/authorize?client_id=5e6227134d7c4e98a8023a732781b402&response_type=code&redirect_uri=http://localhost:3000&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
+  const authUrl = `https://accounts.spotify.com/authorize?client_id=${data.CLIENT_ID}&response_type=code&redirect_uri=${data.REDIRECT_URI}&scope=${data.SCOPES}`;
   return (
     <>
       <div className="min-h-screen flex flex-col items-center justify-around logo ">

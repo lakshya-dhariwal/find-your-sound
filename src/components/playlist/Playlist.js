@@ -16,18 +16,27 @@ function Playlist({ spotify, playlist, setPlaylist }) {
     setPlaylistName(e.target.value);
   };
   const savePlaylistHandler = () => {
-    let id;
-    spotify.getMe().then(
+    let playlistId;
+    let tracks = [];
+    playlist.map((track) => {
+      tracks.push(track.uri);
+    });
+    spotify.createPlaylist(playlistName).then(
       (data) => {
-        id = data.body.id;
-      },
-      (err) => {
-        console.error(err);
-      }
-    );
-    spotify.createPlaylist(id, playlistName, { public: true }).then(
-      (data) => {
-        console.log(data);
+        playlistId = data.body.id;
+        console.log("playlistId", playlistId);
+        spotify.addTracksToPlaylist(playlistId, tracks).then(
+          (data) => {
+            if (data.statusCode === 201) {
+              setPlaylistName("Playlist by Find Your Sound");
+              setPlaylist([]);
+              alert("Playlist added to Your Spotify Library");
+            }
+          },
+          (err) => {
+            console.error("add error", err);
+          }
+        );
       },
       (err) => {
         console.error(err);
@@ -61,7 +70,7 @@ function Playlist({ spotify, playlist, setPlaylist }) {
         spotify={spotify}
       />
       <div className="w-full flex items-center">
-        <ul className="grid grid-cols-1 sm:grid-cols-3 mx-10 sm:mx-0 md:grid-cols-4 m-4 gap-10 sm:grid-cols-4 z-0 ">
+        <ul className="grid grid-cols-1 sm:grid-cols-3 mx-10 sm:mx-0 md:grid-cols-4 m-4 gap-10  z-0 ">
           {playlist
             ? playlist.map((song) => {
                 return (
