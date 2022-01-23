@@ -37,7 +37,7 @@ function Discover({
         <div className="flex rounded-3xl border w-80 items-center justify-center p-1 text-stone-300  border-slate-500 text-center">
           <h1 className="text-center flex ">
             <img src="info.svg" alt="info" width={30} className="px-2" />
-            Hover to play Click to add to playlist
+            Hover to play Click + to add to playlist
           </h1>
         </div>
       </div>
