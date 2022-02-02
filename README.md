@@ -18,8 +18,8 @@
 
 ### How to run Locally
 
-- Clone the repo ` git clone https://github.com/lakshya-dhariwal/find-your-sound.git`
-- Go to [Spotify Developer Dashboard](/developer.spotify.com/dashboard/applications) to create an application
+- Fork and Clone this repository
+- Go to [Spotify Developer Dashboard](/developer.spotify.com/dashboard/applications) and create an application
 - Generate ClientID and Client Secret (Do not share your secret with anyone)
 - Update ENV for Server (checkout .env.sample) and src/constants in Client with your information
 - Install dependencies for server and client , using ` npm install`
