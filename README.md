@@ -9,26 +9,26 @@
 ![image](./demo/demo-2.png)
 ![image](./demo/demo-3.png)
 
-## Tools
+### Tools used
 
 - React
 - TailwindCSS
 - Framer Motion
-- Nodejs (for Auth Server) [Auth Server](https://github.com/lakshya-dhariwal/spotify-auth-server)
+- Nodejs (for Auth Server) 
 
 ### How to run Locally
 
 - Clone the repo ` git clone https://github.com/lakshya-dhariwal/find-your-sound.git`
-- Go to ![Spotify Developer Dashboard](/developer.spotify.com/dashboard/applications) to create an application
+- Go to [Spotify Developer Dashboard](/developer.spotify.com/dashboard/applications) to create an application
 - Generate ClientID and Client Secret (Do not share your secret with anyone)
 - Update ENV for Server (checkout .env.sample) and src/constants in Client with your information
 - Install dependencies for server and client , using ` npm install`
 - Cd into server and run ` node server.js`
 - Cd into client and run ` npm run start`
 
----
 
-##### Why is this not hosted?
+
+### Why is this not hosted?
 
 Because spotify only allows pre defined spotify users to use an app in Development Phase . And your project need to have a defined use (not a hobby project) to be granted extended access.
 
