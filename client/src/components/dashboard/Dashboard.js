@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import useAuth from "../../Hooks/useAuth.js";
-import useApi from "../../Hooks/useApi.js";
+import useAuth from "../../hooks/useAuth.js";
+import useApi from "../../hooks/useApi.js";
 import Nav from "../Nav.js";
 import Search from "../search/Search.js";
 import Discover from "../discover/Discover.js";
