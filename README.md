@@ -1,7 +1,7 @@
 <h1 align="center">
   <img src="./demo/gif-demo.gif" />
 </h1>
-<h3 text="center">Streamline the process from discovery of music to addition to your library. Made for Spotify.</h3>
+<h3 text="center">Simplify how you discover music and it to your library. Made for Spotify.</h3>
 
 ## [Click here to watch a Demo Video](https://player.vimeo.com/video/667388858?h=1055c2e218&badge=0&autopause=0&player_id=0&app_id=58479)
 
